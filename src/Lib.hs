@@ -1,4 +1,5 @@
 module Lib where
+import PdePreludat
 
 -- Modelo inicial
 
@@ -9,8 +10,8 @@ data Jugador = UnJugador {
 } deriving (Eq, Show)
 
 data Habilidad = Habilidad {
-  fuerzaJugador :: Int,
-  precisionJugador :: Int
+  fuerzaJugador :: Number,
+  precisionJugador :: Number
 } deriving (Eq, Show)
 
 -- Jugadores de ejemplo
@@ -20,12 +21,12 @@ todd = UnJugador "Todd" "Ned" (Habilidad 15 80)
 rafa = UnJugador "Rafa" "Gorgory" (Habilidad 10 1)
 
 data Tiro = UnTiro {
-  velocidad :: Int,
-  precision :: Int,
-  altura :: Int
+  velocidad :: Number,
+  precision :: Number,
+  altura :: Number
 } deriving (Eq, Show)
 
-type Puntos = Int
+type Puntos = Number
 
 -- Funciones útiles
 
