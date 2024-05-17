@@ -1,8 +1,6 @@
 module Lib where
 import PdePreludat
 
-import Text.Show.Functions
-
 -- Modelo inicial
 
 data Jugador = UnJugador {
@@ -68,7 +66,7 @@ madera habilidad = UnTiro {
   }
 
 -- Los hierros, que varían del 1 al 10 (número al que denominaremos n), generan un tiro de velocidad igual a la fuerza multiplicada por n, la precisión dividida por n y una altura de n-3 (con mínimo 0). Modelarlos de la forma más genérica posible.
-hierro :: Int -> Palo
+hierro :: Number -> Palo
 hierro n habilidad = UnTiro {
   velocidad = fuerzaJugador habilidad * n,
   precision = precisionJugador habilidad `div` n,
@@ -133,12 +131,12 @@ vaAlRasDelSuelo = (==0).altura
 {-
 Una laguna es superada si la velocidad del tiro es mayor a 80 y tiene una altura de entre 1 y 5 metros. Luego de superar una laguna el tiro llega con la misma velocidad y precisión, pero una altura equivalente a la altura original dividida por el largo de la laguna.
 -}
-laguna :: Int -> Obstaculo
+laguna :: Number -> Obstaculo
 laguna largo = obstaculoSuperableSi superaLaguna (efectoLaguna largo)
 
 superaLaguna :: Tiro -> Bool
 superaLaguna tiro = velocidad tiro > 80 && (between 1 5.altura) tiro
-efectoLaguna :: Int -> Tiro -> Tiro
+efectoLaguna :: Number -> Tiro -> Tiro
 efectoLaguna largo tiroOriginal = tiroOriginal {altura = altura tiroOriginal `div` largo}
 
 
