@@ -49,7 +49,7 @@ mayorSegun f a b
     - Los hierros, que varían del 1 al 10 (número al que denominaremos n), generan un tiro de velocidad igual a la fuerza multiplicada por n, la precisión dividida por n y una altura de n-3 (con mínimo 0). Modelarlos de la forma más genérica posible.
 -}
 
-palo :: String -> Int -> Habilidad -> Tiro
+palo :: String -> Number -> Habilidad -> Tiro
 palo "putter" _ habilidad = UnTiro {
   velocidad = 10,
   precision = precisionJugador habilidad * 2,
